@@ -25,11 +25,11 @@ export const PUBLISHERS: Publisher[] = [
             rating: 4,
             comment: 'Guaranteed book quality',
             author: 'Prof. U. G. Dayagamage',
-            date: '2020-10-01T12:00:48:12'
+            date: '2020-10-01T00:48:12'
         },
         {
             rating: 4,
-            comment: 'They only accept high quality books and also they are trusted publisher',
+            comment: 'They only accept high quality books',
             author: 'Mr. Y. F. Buwaneka',
             date: '2020-09-18T20:14:35'
         },
