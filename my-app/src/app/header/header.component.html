@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
     <span><img src="assets/img/book3.png" height=30 width=41></span>
-    <a mat-button routerLink="/home"><span class="fa fa-home fa-lg"></span> Home</a>
-    <a mat-button routerLink="/about"><span class="fa fa-info fa-lg"></span> About</a>
-    <a mat-button routerLink="/publishers"><span class="fa fa-list fa-lg"></span> Publisher</a>
-    <a mat-button routerLink="/author"><span class="fa fa-list fa-lg"></span> Author</a>
-    <a mat-button routerLink="/contact"><span class="fa fa-address-card fa-lg"></span> Contact</a>
+    <a mat-button routerLink="/home" routerLinkActive='active'><span class="fa fa-home fa-lg"></span> Home</a>
+    <a mat-button routerLink="/about" routerLinkActive='active'><span class="fa fa-info fa-lg"></span> About</a>
+    <a mat-button routerLink="/publishers" routerLinkActive='active'><span class="fa fa-list fa-lg"></span> Publisher</a>
+    <a mat-button routerLink="/author" routerLinkActive='active'><span class="fa fa-list fa-lg"></span> Author</a>
+    <a mat-button routerLink="/contact" ><span class="fa fa-address-card fa-lg"></span> Contact</a>
+    <span class="flex-spacer"></span>
+    <a mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+    <a mat-button (click)="openSignupForm()"><span class="fa fa-user-circle"></span> Sign up</a>
+
 </mat-toolbar>
   
 <div class="jumbotron">
@@ -22,9 +26,8 @@
         <h1>AUTHOR - PUBLISHER NEXUS</h1>
         <p>You can select choose as you wish..!</p>
       </div>
-      <div fxFlex fxFlex.gt-sm="20%">
-        <img src="assets/img/book3.png" alt="Logo">
-      </div>
+      <div fxFlex fxFlex.gt-sm="20%" class="col-12 col-sm align-self-center">
+        <img src="assets/img/book3.png" class="img-fluid">
       <div fxFlex></div>
     </div>
   </div>

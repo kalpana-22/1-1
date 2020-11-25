@@ -6,7 +6,6 @@
 @import 'C:\Users\sasith\1-1\my-app\node_modules\font-awesome\css\font-awesome.min.css';
 @import 'C:\Users\sasith\1-1\my-app\node_modules\bootstrap-social\bootstrap-social.css';
 
-
 /*....*/
 
 body {
@@ -15,10 +14,6 @@ body {
     font-family: Roboto, sans-serif;
 }
 
-.container {
-    margin: 0px;
-    display:flex;   
-}
 
 /**new**/
 .row-header {
@@ -65,10 +60,10 @@ body {
   .carousel {
     background: #512DA8;
   }
-  .carousel .carousel-item {
+  .carousel-item {
     height: 300px;
   }
-  .carousel .carousel-item img {
+  .carousel-item img {
     position: absolute;
     top: 0;
     left: 0;
@@ -80,6 +75,8 @@ body {
     bottom: 0px;
     z-index: 1;
   }
+
+
   .background-primary {
     background-color: #512DA8!important;
   }
@@ -89,6 +86,13 @@ body {
 .text-floral-white {
     color: floralwhite!important;
 }
+
+.active {
+  background: #4527A0;
+}
   
+.flex-spacer {
+  flex: 1 1 auto;
+}
   /*my adding from _modal*/
-  
+

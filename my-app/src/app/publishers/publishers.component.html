@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div fxFlex>
+    <div fxFlex class="">
         <mat-grid-list cols="2" rowHeight="200px">
             <mat-grid-tile *ngFor="let publisher of publishers" (click)="onSelect(publisher)">
                 <img  height="200px" src={{publisher.image}} alt={{publisher.name}}>
@@ -23,7 +23,7 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-
+    
 <app-publicationdetail [publishers]="selectedPublisher"></app-publicationdetail>
-
+<p></p>
 </div>

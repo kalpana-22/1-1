@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Publisher} from '../shared/publishers';
-import {PUBLISHERS} from '../shared/publications';
-
+import { from } from 'rxjs';
+import { Publisher } from '../shared/publishers';
+import { PublisherService } from '../service/publisher.service';
 
 @Component({
   selector: 'app-publishers',
@@ -10,13 +10,14 @@ import {PUBLISHERS} from '../shared/publications';
 })
 export class PublishersComponent implements OnInit {
 
-  publishers: Publisher[] = PUBLISHERS;
+  publishers: Publisher[];
 
   selectedPublisher: Publisher;
   
-  constructor() { }
+  constructor(private publisherService: PublisherService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    this.publishers = this.publisherService.getPublishers();
   }
 
   onSelect(publishers: Publisher) {
