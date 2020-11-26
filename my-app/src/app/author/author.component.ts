@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+///new adding//
+
+/////////////
 
 @Component({
   selector: 'app-author',
