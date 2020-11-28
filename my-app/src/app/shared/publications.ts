@@ -4,7 +4,7 @@ export const PUBLISHERS: Publisher[] = [
     {
       id: '0',
       publication:'Ariya Publisher',
-      name:'Mr. K. R. Imbuldeniya',
+      name:'Mr. K. Ariyapala',
       image:'/assets/img/book7.jpeg',
       logo: '/assets/img/book8.jpg',
       description:'we are highly motivated publication company.',

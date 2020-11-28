@@ -57,7 +57,7 @@ import { SignupComponent } from './signup/signup.component';
     AuthorComponent,
     LoginComponent,
     SignupComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

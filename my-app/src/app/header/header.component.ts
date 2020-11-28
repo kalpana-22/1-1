@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from '../Signup/signup.component';
+//import { SignupComponent } from './../Signup/signup.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(LoginComponent, {width: '500px', height: '400px'});
   }
 
-  openSignupForm() {
-    this.dialog.open(SignupComponent, {width: '500px', height: '630px'});
-  }
+  //openSignupForm() {
+   // this.dialog.open(SignupComponent, {width: '500px', height: '630px'});
+ // }
 }
