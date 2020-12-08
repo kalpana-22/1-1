@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row row-content">
+        <div class="col">
+            <h3>Selecting Publishers </h3>
+       
+        <ng-select [items]="Publishers"
+                   bindLabel="name"
+                   bindValue="id"
+                   [multiple]="true"
+                   placeholder="Select Publishers"
+                   [(ngModel)]="selectedPublishersIds">
+        </ng-select>
+        <p>
+            Selected Publishers: {{selectedPublishersIds}}
+        </p>
+
+        <div class="col">
+            <button mat-raised-button>Submit</button>
+        </div>
+        <div class="row row-content">
+            <div class="col">
+                Status:
+                <button mat-raised-button color="primary">Accept</button>
+                
+                <button mat-raised-button color="warn">Reject</button>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</div>

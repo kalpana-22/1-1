@@ -13,8 +13,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
+//import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+
 
 /*..My adding..*/
 //import { AppBoostrapModule } from './app-boostrap/app-boostrap.module';
@@ -46,6 +48,7 @@ import { from } from 'rxjs';
 import { PublisherService } from './service/publisher.service';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -79,11 +82,13 @@ import { SignupComponent } from './signup/signup.component';
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
+    NgSelectModule,
     
     //AppBoostrapModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    //NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     PublisherService

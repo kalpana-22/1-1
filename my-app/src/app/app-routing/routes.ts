@@ -15,6 +15,6 @@ export const routes: Routes = [
   { path: 'contact',  component: ContactComponent },
   { path: 'about',  component: AboutComponent },
   { path: 'signup',  component: SignupComponent },
-  { path: 'publicationdetail',  component: PublicationdetailComponent },
+  { path: 'publicationdetail/:id',  component: PublicationdetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
