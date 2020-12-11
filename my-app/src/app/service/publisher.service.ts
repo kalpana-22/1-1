@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Publisher} from '../shared/publishers';
 import {PUBLISHERS} from '../shared/publications';
-import { of } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Injectable({
@@ -11,11 +11,15 @@ export class PublisherService {
 
   constructor() { }
 
-  getPublishers(): Publisher[] {
-    return PUBLISHERS;
+  getPublishers(): Observable<Publisher[]> {
+    return of(PUBLISHERS).pipe();
   }
 
-  getPublisher(id: string) : Publisher {
-    return PUBLISHERS.filter((publisher) => (publisher.id === id))[0];
+  getPublisher(id: string) : Observable<Publisher> {
+    return of(PUBLISHERS.filter((publisher) => (publisher.id === id))[0]).pipe();
+  }
+
+  getPublishersId(): Observable<string[] | any> {
+    return of(PUBLISHERS.map(publisher => publisher.id));
   }
 }

@@ -17,7 +17,8 @@ export class PublishersComponent implements OnInit {
   constructor(private publisherService: PublisherService) { }
 
   ngOnInit(): void{
-    this.publishers = this.publisherService.getPublishers();
+    this.publisherService.getPublishers()
+      .subscribe(publisher => this.publishers = publisher);
   }
 
   onSelect(publishers: Publisher) {

@@ -9,6 +9,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
 
+  
+
 signupform: FormGroup;
 errorList:string[];
 username:FormControl;
@@ -20,6 +22,7 @@ rpassword:FormControl;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    
     this.signupform = this.fb.group({});
     this.username = new FormControl('', Validators.required );
     this.phonenumber = new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{11}")] );
@@ -28,4 +31,6 @@ rpassword:FormControl;
     this.rpassword = new FormControl('',Validators.required);
   }
 
+  
+    
 }

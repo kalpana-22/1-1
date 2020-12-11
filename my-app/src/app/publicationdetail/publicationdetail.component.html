@@ -6,8 +6,7 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
-  <div fxFlex="40">
-    <div fxFlex *ngIf="publishers">
+  <div fxFlex="40"  *ngIf="publishers">
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
@@ -22,16 +21,21 @@
                 <p>Founder Member : {{publishers.name}}</p>
             </mat-card-content>
             <mat-card-actions>
+                <button mat-button [routerLink]="['/publicationdetail',prev]">
+                    <span class="fa fa-chevron-left fa-lg"></span>
+                </button>
                 <button mat-button (click)="goBack()">BACK</button>
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
+                <button mat-button [routerLink]="['/publicationdetail',next]">
+                    <span class="fa fa-chevron-right fa-lg"></span>
+                </button>
             </mat-card-actions>
-        </mat-card>
-    </div>
+        </mat-card> 
   </div>
 
-  <div fxFlex="40">
-      <mat-list *ngIf="publishers">
+  <div fxFlex="40"  *ngIf="publishers">
+      <mat-list>
           <h3>Comments</h3>
         <mat-list-item *ngFor="let comment of publishers.comments">
             <h4 matLine>{{comment.comment}}</h4>
