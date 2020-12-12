@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Register } from '../shared/register';
 
 
 @Component({
@@ -9,28 +10,30 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
 
-  
-
 signupform: FormGroup;
-errorList:string[];
-username:FormControl;
-email:FormControl;
-phonenumber:FormControl;
-password:FormControl;
-rpassword:FormControl;
+register: Register;
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-    
-    this.signupform = this.fb.group({});
-    this.username = new FormControl('', Validators.required );
-    this.phonenumber = new FormControl('', [Validators.required, Validators.pattern("[0-9 ]{11}")] );
-    this.email = new FormControl('', [Validators.required, Validators.email]);
-    this.password = new FormControl('',[Validators.required, Validators.maxLength(15),Validators.minLength(5)]);
-    this.rpassword = new FormControl('',Validators.required);
+  constructor(private fb: FormBuilder) { 
+    this.createForm();
   }
 
-  
+  ngOnInit() {
     
+  }
+
+  createForm() {
+    this.signupform = this.fb.group({
+      username: '',
+      email: '',
+      phonenumber: 0,
+      password: '',
+      rpassword: ''
+    });
+  }
+    
+  onSubmit() {
+    this.register = this.signupform.value;
+    console.log(this.register);
+    this.signupform.reset();
+  }    
 }
