@@ -51,6 +51,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
+//
+import { HttpClientModule } from '@angular/common/http';
+//
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +89,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatSliderModule,
     ReactiveFormsModule,
     NgSelectModule,
+
+    //
+    HttpClientModule,
+    //
     
     //AppBoostrapModule,
     BsDropdownModule.forRoot(),

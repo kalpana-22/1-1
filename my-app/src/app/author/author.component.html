@@ -1,4 +1,4 @@
-<div class="container">
+    <div class="container bg-light">
     <div class="row row-content">
         <div class="col">
             <h3>Selecting Publishers </h3>
@@ -14,9 +14,50 @@
             Selected Publishers: {{selectedPublishersIds}}
         </p>
 
-        <div class="col">
-            <button mat-raised-button>Submit</button>
-        </div>
+        
+        <div class="card bg-light">
+            <div fxFlex fxFlexOffset="20px" class="form-size">
+
+            <form [formGroup]="myForm" (ngSubmit)="submit()" >
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                    formControlName="name"
+                    id="name"
+                    class="form-control"
+                    type="text">
+                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+        
+                        <div *ngIf="f.name.errors.required">Name is required.</div>
+            
+                        <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
+            
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <label for="file">File</label>
+                    <input
+                    formControlName="file"
+                    id="file" 
+                    type="file" 
+                    class="form-control"
+                    (change)="onFileChange($event)">
+                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+        
+                        <div *ngIf="f.file.errors.required">File is required.</div>
+            
+                    </div>
+                </div>
+        
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <p></p>
+            </form>
+            
+        
+    </div>
+        
         <div class="row row-content">
             <div class="col">
                 Status:
@@ -29,3 +70,9 @@
         </div>
     </div>
 </div>
+
+
+
+</div>
+
+
