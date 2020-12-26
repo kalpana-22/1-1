@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { from } from 'rxjs';
 import { Publisher } from '../shared/publishers';
 import { PublisherService } from '../service/publisher.service';
@@ -12,7 +12,7 @@ export class PublishersComponent implements OnInit {
 
   publishers: Publisher[];
 
-  selectedPublisher: Publisher;
+  //selectedPublisher: Publisher;
   
   constructor(private publisherService: PublisherService) { }
 
@@ -21,8 +21,8 @@ export class PublishersComponent implements OnInit {
       .subscribe(publisher => this.publishers = publisher);
   }
 
-  onSelect(publishers: Publisher) {
-    this.selectedPublisher = publishers;
-  }
+  //onSelect(publishers: Publisher) {
+    //this.selectedPublisher = publishers;
+  //}
 }
 

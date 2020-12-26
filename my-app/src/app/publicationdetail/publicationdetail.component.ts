@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Params , ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Publisher } from '../shared/publishers';
@@ -6,6 +6,7 @@ import { PublisherService } from '../service/publisher.service';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment';
+
 
 
 @Component({
@@ -44,7 +45,8 @@ export class PublicationdetailComponent implements OnInit {
   constructor(private publisherService: PublisherService, 
     private route: ActivatedRoute , 
     private location: Location ,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder
+    ) { }
   
   ngOnInit() {
     this.createForm();

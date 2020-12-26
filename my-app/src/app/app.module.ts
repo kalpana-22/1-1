@@ -51,9 +51,11 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
-//
+//import { HttpModule } from '@angular/http';
+
 import { HttpClientModule } from '@angular/common/http';
-//
+import { baseURL } from './shared/baseurl';
+
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { HttpClientModule } from '@angular/common/http';
     FlexLayoutModule,
     FormsModule,
     AppRoutingModule,
+    //HttpModule,
+    HttpClientModule,
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
@@ -90,8 +94,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     NgSelectModule,
 
-    //
-    HttpClientModule,
+    
     //
     
     //AppBoostrapModule,
@@ -101,7 +104,8 @@ import { HttpClientModule } from '@angular/common/http';
     //NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
-    PublisherService
+    PublisherService,
+    { provide: 'BaseURL', useValue: baseURL }
   ],
   
   bootstrap: [AppComponent]

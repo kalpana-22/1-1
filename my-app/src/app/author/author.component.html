@@ -1,77 +1,70 @@
-    <div class="container bg-light">
+<div class="container bg-light">
     <div class="row row-content">
         <div class="col">
             <h3>Selecting Publishers </h3>
-       
-        <ng-select [items]="Publishers"
-                   bindLabel="name"
-                   bindValue="id"
-                   [multiple]="true"
-                   placeholder="Select Publishers"
-                   [(ngModel)]="selectedPublishersIds">
-        </ng-select>
-        <p>
-            Selected Publishers: {{selectedPublishersIds}}
-        </p>
 
-        
-        <div class="card bg-light">
-            <div fxFlex fxFlexOffset="20px" class="form-size">
-
-            <form [formGroup]="myForm" (ngSubmit)="submit()" >
-
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                    formControlName="name"
-                    id="name"
-                    class="form-control"
-                    type="text">
-                    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
-        
-                        <div *ngIf="f.name.errors.required">Name is required.</div>
-            
-                        <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>
-            
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="file">File</label>
-                    <input
-                    formControlName="file"
-                    id="file" 
-                    type="file" 
-                    class="form-control"
-                    (change)="onFileChange($event)">
-                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-        
-                        <div *ngIf="f.file.errors.required">File is required.</div>
-            
-                    </div>
-                </div>
-        
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <p></p>
-            </form>
-            
-        
-    </div>
-        
-        <div class="row row-content">
-            <div class="col">
-                Status:
-                <button mat-raised-button color="primary">Accept</button>
-                
-                <button mat-raised-button color="warn">Reject</button>
+            <div class="form-group col">
+                <p>
+                    Selected Publishers: {{selectedPublishersIds}}
+                </p>
             </div>
-        </div>
         
-        </div>
-    </div>
-</div>
-
-
+            <div class="card bg-light ">
+                <form novalidate [formGroup]="myForm" (ngSubmit)="submit()" >
+                    
+                    <div class="form-group col">
+                        <ng-select [items]="publishers"
+                        bindLabel="publication"
+                        formControlName="selectedPublisher"
+                        bindValue="id"
+                        [multiple]="true"
+                        placeholder="Select Publishers" 
+                        [(ngModel)]="selectedPublishersIds">
+                        </ng-select>
+                    </div>
+                    
+                    <div class="form-group col">
+                        <label for="name">Name</label>
+                        <input
+                        formControlName="name"
+                        id="name"
+                        class="form-control"
+                        type="text">
+                        <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">        
+                            <div *ngIf="f.name.errors.required">Name is required.</div>            
+                            <div *ngIf="f.name.errors.minlength">Name should be 3 character.</div>            
+                        </div>
+                    </div>
+                
+                    <div class="form-group col">
+                        <label for="file">File</label>
+                        <input
+                        formControlName="file"
+                        id="file" 
+                        type="file" 
+                        class="form-control"
+                        (change)="onFileChange($event)">
+                        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                            <div *ngIf="f.file.errors.required">File is required.</div>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="form-group col">
+                        <button class="btn btn-primary" (click)="submit" [disabled]="myForm.invalid">Submit</button>
+                    </div>
+                  
+                    <div class="form-group col">
+                        <div class="col">
+                            Status:
+                        <button mat-raised-button color="primary">Accept</button>
+            
+                        <button mat-raised-button color="warn">Reject</button>
+                        </div>
+    
+                    </div>
+                  
+                </form>
 
 </div>
 
