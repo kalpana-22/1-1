@@ -3,7 +3,7 @@ import {Publisher} from '../shared/publishers';
 //import {PUBLISHERS} from '../shared/publications';
 import { Observable, of, pipe } from 'rxjs';
 import { delay, map, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
@@ -30,6 +30,18 @@ export class PublisherService {
     return this.getPublishers().pipe(map(publishers => publishers.map(publisher => publisher.id)))
     .pipe(catchError(error => error));
   }
+
+  putPublisher(publisher: Publisher): Observable<Publisher> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<Publisher>(baseURL + 'publisher/' + publisher.id, publisher, httpOption)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
 }
 
 

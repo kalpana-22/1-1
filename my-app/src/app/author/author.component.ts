@@ -55,7 +55,7 @@ export class AuthorComponent implements OnInit {
 
 
     // console.log(this.myForm.value);
-    this.my = this.myForm.value;
+    this.my = this.myForm.value; 
     this.my.selectedPublisher = this.myForm.value.selectedPublisher;
     this.my.name = this.myForm.value.name;
     this.my.file = this.myForm.value.file;

@@ -27,6 +27,7 @@ export class PublicationdetailComponent implements OnInit {
   @ViewChild('cform') commentFormDirective;
   comment: Comment;
   commentForm: FormGroup;
+  publishercopy: Publisher;
 
   formErrors = {
     'author': '',
@@ -56,7 +57,7 @@ export class PublicationdetailComponent implements OnInit {
       .subscribe((publishersIds) => this.publishersIds = publishersIds)
     this.route.params
       .pipe(switchMap((params: Params) => this.publisherService.getPublisher(params['id'])))
-      .subscribe(publishers => { this.publishers = publishers; this.setPrevNext(publishers.id)},
+      .subscribe(publishers => { this.publishers = publishers; this.publishercopy = publishers; this.setPrevNext(publishers.id)},
         errmess => this.errMess = <any>errmess );
   }
 
@@ -107,7 +108,13 @@ export class PublicationdetailComponent implements OnInit {
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString();
     console.log(this.comment);
-    this.publishers.comments.push(this.comment);
+    this.publishercopy.comments.push(this.comment);
+    this.publisherService.putPublisher(this.publishercopy)
+      .subscribe(publisher => {
+        this.publishers = publisher;
+        this.publishercopy = publisher;
+      },
+      errMess => { this.publishers = null; this.publishercopy = null; this.errMess = <any>errMess});
     this.commentFormDirective.resetForm();
     this.commentForm.reset({
       author: '',
