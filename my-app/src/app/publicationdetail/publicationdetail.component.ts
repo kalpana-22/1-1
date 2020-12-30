@@ -20,6 +20,7 @@ export class PublicationdetailComponent implements OnInit {
 
 
   publishers: Publisher;
+  errMess: string;
   publishersIds: string[];
   prev: string;
   next: string;
@@ -55,7 +56,8 @@ export class PublicationdetailComponent implements OnInit {
       .subscribe((publishersIds) => this.publishersIds = publishersIds)
     this.route.params
       .pipe(switchMap((params: Params) => this.publisherService.getPublisher(params['id'])))
-      .subscribe(publishers => { this.publishers = publishers; this.setPrevNext(publishers.id) });
+      .subscribe(publishers => { this.publishers = publishers; this.setPrevNext(publishers.id)},
+        errmess => this.errMess = <any>errmess );
   }
 
   setPrevNext(publishersIds: string) {

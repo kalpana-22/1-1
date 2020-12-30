@@ -11,6 +11,7 @@ import { PublisherService } from '../service/publisher.service';
 export class PublishersComponent implements OnInit {
 
   publishers: Publisher[];
+  errMess: string;
 
   //selectedPublisher: Publisher;
   
@@ -18,7 +19,8 @@ export class PublishersComponent implements OnInit {
 
   ngOnInit() {
     this.publisherService.getPublishers()
-      .subscribe(publisher => this.publishers = publisher);
+      .subscribe(publisher => this.publishers = publisher,
+        errmess => this.errMess = <any>errmess);
   }
 
   //onSelect(publishers: Publisher) {

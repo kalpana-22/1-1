@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
 /*..My adding..*/
 //import { AppBoostrapModule } from './app-boostrap/app-boostrap.module';
 
@@ -47,6 +48,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { from } from 'rxjs';
 
 import { PublisherService } from './service/publisher.service';
+import { ProcessHTTPMsgService } from './service/process-httpmsg.service';
+
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -71,6 +74,7 @@ import { baseURL } from './shared/baseurl';
     LoginComponent,
     SignupComponent
     ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -105,6 +109,7 @@ import { baseURL } from './shared/baseurl';
   ],
   providers: [
     PublisherService,
+    ProcessHTTPMsgService,
     { provide: 'BaseURL', useValue: baseURL }
   ],
   
