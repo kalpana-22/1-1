@@ -64,10 +64,10 @@ export class AuthorComponent implements OnInit {
     console.log(this.my);
 
     const formData = new FormData();
-    formData.append('file', this.myForm.get('fileSource').value);
+    formData.append('file', this.myForm.get('name').value);
     //console.log(this.myForm);
     this.myForm.reset();//
-    this.http.post(baseURL, formData)
+    this.http.post("http://localhost:3000/my", formData)
       .subscribe(res => {
         console.log(res);
         alert('Uploaded Successfully.');

@@ -58,6 +58,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 import { HttpClientModule } from '@angular/common/http';
 import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { baseURL } from './shared/baseurl';
     ContactComponent,
     AuthorComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HighlightDirective
     ],
 
   imports: [

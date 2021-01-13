@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
+import { Feedback } from '../shared/feedback';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class PublisherService {
     .pipe(catchError(error => error));
   }
 
-  putPublisher(publisher: Publisher): Observable<Publisher> {
+  putPublisher(publisher: Publisher): Observable<Publisher>{ 
     const httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -41,6 +42,18 @@ export class PublisherService {
     return this.http.put<Publisher>(baseURL + 'publisher/' + publisher.id, publisher, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
+
+  submitFeedback(feedback: Feedback): Observable<Feedback> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.put<Feedback>(baseURL + 'feedback/' +  feedback, httpOption)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
 
 }
 
