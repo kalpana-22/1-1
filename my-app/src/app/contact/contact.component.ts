@@ -1,6 +1,9 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { PublisherService } from '../service/publisher.service';
+import { HttpClient } from '@angular/common/http';
+
 import { Feedback, ContactType } from '../shared/feedback';
 
 @Component({
@@ -43,7 +46,9 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+    private http: HttpClient,
+    private publisherService: PublisherService) { 
     this.createForm();
    }
 
@@ -99,7 +104,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    this.feedbackFormDirective.resetForm();
+   // this.feedbackFormDirective.resetForm();
   }
 
 }

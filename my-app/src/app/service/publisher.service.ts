@@ -50,7 +50,7 @@ export class PublisherService {
       })
     };
 
-    return this.http.put<Feedback>(baseURL + 'feedback/' +  feedback, httpOption)
+    return this.http.post<Feedback>(baseURL + 'feedback/' +  feedback, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 

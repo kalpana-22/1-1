@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/hello")
 public class HelloWorldController {
 
-/*
+
     @GetMapping
     public String sayHello() {
         return "Hello WOld";
     }
-*/
+
 
     @GetMapping("{username}/{password}")
     public String userNameSave(@PathVariable String username, @PathVariable String password) {

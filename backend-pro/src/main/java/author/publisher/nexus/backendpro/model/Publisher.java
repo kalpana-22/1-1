@@ -3,12 +3,12 @@ package author.publisher.nexus.backendpro.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("authors")
-public class Author {
+@Document("publisher")
+public class Publisher {
 
     @Id
     private String id;
-    private String username;
+    private String name;
     private String password;
     private String email;
 
@@ -20,12 +20,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

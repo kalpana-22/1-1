@@ -51,31 +51,7 @@ export class AuthorComponent implements OnInit {
     }
   }
 
-  submit(){
-
-
-    // console.log(this.myForm.value);
-    this.my = this.myForm.value; 
-    this.my.selectedPublisher = this.myForm.value.selectedPublisher;
-    this.my.name = this.myForm.value.name;
-    this.my.file = this.myForm.value.file;
-    this.my.fileSource = this.myForm.value.fileSource;
-
-    console.log(this.my);
-
-    const formData = new FormData();
-    formData.append('file', this.myForm.get('name').value);
-    //console.log(this.myForm);
-    this.myForm.reset();//
-    this.http.post("http://localhost:3000/my", formData)
-      .subscribe(res => {
-        console.log(res);
-        alert('Uploaded Successfully.');
-      })
-
-  }
-
-  ngOnInit() {
+   ngOnInit() {
     this.publisherService.getPublishers()
     .subscribe(publisher => this.publishers = publisher,
       errmess => this.errMess = <any>errmess);
@@ -88,6 +64,34 @@ export class AuthorComponent implements OnInit {
       file: '',
       fileSource: ''
     });
+
+    this.myForm.valueChanges
+    .subscribe(data => this.onFileChange(data));
+
+  }
+
+  submit(){
+
+
+    //console.log(this.myForm.value);
+    this.my = this.myForm.value; 
+    this.my.selectedPublisher = this.myForm.value.selectedPublisher;
+    this.my.name = this.myForm.value.name;
+    this.my.file = this.myForm.value.file;
+    this.my.fileSource = this.myForm.value.fileSource;
+
+    //console.log(this.my);
+
+    const formData = new FormData();
+    formData.append('file', this.myForm.get('name').value);
+    //console.log(this.myForm);
+    
+    this.http.post("http://localhost:3000/my", formData)
+      .subscribe(res => {
+        console.log(this.myForm);
+        alert('Uploaded Successfully.');
+      })
+      this.myForm.reset();
   }
 
    ////////
