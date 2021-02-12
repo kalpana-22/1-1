@@ -4,6 +4,8 @@ export const PUBLISHERS: Publisher[] = [
     {
       id: '0',
       publication:'Ariya Publisher',
+      email:'ariyapublishers@gmail.com',
+      password:'ariya',
       name:'Mr. K. Ariyapala',
       image:'/assets/img/book7.jpeg',
       logo: '/assets/img/book8.jpg',
@@ -38,6 +40,8 @@ export const PUBLISHERS: Publisher[] = [
     {
       id: '1',
       publication:'A',
+      email:'a@gmail.com',
+      password:'a',
       name:'Mr.A',
       image:'/assets/img/book2.jpg',
       logo:'/assets/img/book4.png',
@@ -72,6 +76,8 @@ export const PUBLISHERS: Publisher[] = [
     {
       id: '2',
       publication:'B',
+      email:'b@gmail.com',
+      password:'b',
       name:'Mr.B',
       image:'/assets/img/book5.jpeg',
       logo:'/assets/img/book6.jpg',
@@ -106,6 +112,8 @@ export const PUBLISHERS: Publisher[] = [
     {
       id: '3',
       publication:'C',
+      email:'c@gmail.com',
+      password:'c',
       name:'Mr.C',
       image:'/assets/img/book6.jpg',
       logo:'/assets/img/book6.jpg',

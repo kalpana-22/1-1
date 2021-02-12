@@ -18,7 +18,7 @@ export class PublisherService {
     private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   getPublishers(): Observable<Publisher[]> {
-    return this.http.get<Publisher[]>(baseURL + 'publisher')
+    return this.http.get<Publisher[]>('http://localhost:8080/api/publisher')
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 

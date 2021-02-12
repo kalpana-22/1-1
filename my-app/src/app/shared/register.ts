@@ -3,5 +3,5 @@ export class Register {
     email: string;
     phonenumber: number;
     password: string;
-    rpassword: string
+    //rpassword: string
 }

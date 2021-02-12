@@ -3,6 +3,8 @@
     {
       "id": "0",
       "publication": "Ariya Publisher",
+      "email": "ariyapublishers@gmail.com",
+      "password": "ariya",
       "name": "Mr. K. Ariyapala",
       "image": "/assets/img/book7.jpeg",
       "logo": "/assets/img/book8.jpg",
@@ -43,12 +45,20 @@
           "rating": 5,
           "comment": "Very good publication",
           "date": "2020-12-30T17:59:19.702Z"
+        },
+        {
+          "author": "hdkhahd",
+          "rating": 5,
+          "comment": "aaasas",
+          "date": "2021-02-12T10:05:01.358Z"
         }
       ]
     },
     {
       "id": "1",
       "publication": "A",
+      "email": "a@gmail.com",
+      "password": "a",
       "name": "Mr.A",
       "image": "/assets/img/book2.jpg",
       "logo": "/assets/img/book4.png",
@@ -89,6 +99,8 @@
     {
       "id": "2",
       "publication": "B",
+      "email": "b@gmail.com",
+      "password": "b",
       "name": "Mr.B",
       "image": "/assets/img/book5.jpeg",
       "logo": "/assets/img/book6.jpg",
@@ -129,6 +141,8 @@
     {
       "id": "3",
       "publication": "C",
+      "email": "c@gmail.com",
+      "password": "c",
       "name": "Mr.C",
       "image": "/assets/img/book6.jpg",
       "logo": "/assets/img/book6.jpg",
@@ -168,6 +182,12 @@
     },
     {
       "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
     }
   ]
 }

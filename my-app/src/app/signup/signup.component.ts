@@ -19,7 +19,7 @@ formErrors = {
   'email': '',
   'phonenumber': '',
   'password': '',
-  'rpassword': ''
+ // 'rpassword': ''
 }
 
 validationMessages = {
@@ -40,12 +40,12 @@ validationMessages = {
     'required': 'Password is required',
     'minlength':     'Password must be at least 2 characters long.',
       'maxlength':     'Password cannot be more than 16 characters long.'
-  },
-  'rpassword': {
-    'required': 'Password is required',
-    'minlength':     'Password must be at least 2 characters long.',
-      'maxlength':     'Password cannot be more than 16 characters long.'
-  },
+   },
+  // 'rpassword': {
+  //   'required': 'Password is required',
+  //   'minlength':     'Password must be at least 2 characters long.',
+  //     'maxlength':     'Password cannot be more than 16 characters long.'
+  // },
 };
 
   constructor(private fb: FormBuilder) { 
@@ -61,8 +61,8 @@ validationMessages = {
       username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       email: ['',[Validators.required, Validators.email]],
       phonenumber: [0,[Validators.required, Validators.pattern]],
-      password: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
-      rpassword: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]]
+      password: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]]
+      //rpassword: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(16)]]
     });
 
     this.signupform.valueChanges
@@ -99,7 +99,7 @@ validationMessages = {
       email: '',
       phonenumber: 0,
       password: '',
-      rpassword: ''
+     // rpassword: ''
     });
     this.signupformDirective.resetForm();
   }    

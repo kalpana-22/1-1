@@ -1,24 +1,19 @@
-package author.publisher.nexus.backendpro.model;
+package author.publisher.nexus.backendpro.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import author.publisher.nexus.backendpro.model.Comment;
 
-@Document("publisher")
-public class Publisher {
+public class PublisherDTO {
 
-    @Id
     private String id;
-  //  private String publication;
-  //  private String password;
+    private String username; //publication name= username
+    private String password;
     private String email;
     private String accountId;
-    //
     private String name;
     private String image;
     private String logo;
     private String description;
     private Comment comments[];
-
 
     public String getId() {
         return id;
@@ -28,21 +23,21 @@ public class Publisher {
         this.id = id;
     }
 
-//    public String getPublication() {
-//        return publication;
-//    }
-//
-//    public void setPublication(String name) {
-//        this.publication = name;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;
@@ -91,14 +86,6 @@ public class Publisher {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    public String[] getComments() {
-//        return comments;
-//    }
-//
-//    public void setComments(String[] comments) {
-//        this.comments = comments;
-//    }
 
     public Comment[] getComments() {
         return comments;

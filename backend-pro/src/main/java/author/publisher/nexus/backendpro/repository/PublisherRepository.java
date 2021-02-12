@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PublisherRepository extends MongoRepository<Publisher, String> {
 
-   Publisher findByName(String name);
+   Publisher findByUsername(String username);
 
    Publisher findByEmail(String email);
 
