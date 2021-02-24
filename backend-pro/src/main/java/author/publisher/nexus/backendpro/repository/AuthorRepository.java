@@ -6,12 +6,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthorRepository  extends MongoRepository<Author, String> {
-    Author findByUsername(String username);
+    //8//Author findByUsername(String username);
     //
-    Author findByPassword(String password);
+    //8//Author findByPassword(String password);
 
     Author findByEmail(String email);
 
+    Author findByAccountId(String id);
 
-   // Account findByAccoutId();
 }

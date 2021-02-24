@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -25,34 +24,59 @@ public class PublisherController {
 
     @GetMapping
     public List<Publisher> getPublisher(){
+
         return publisherRepository.findAll();
+
     }
 
     @GetMapping("{id}")
-    public Optional<Publisher> getPublisherById(@PathVariable("id") String id){
-        return publisherRepository.findById(id);
+    public PublisherDTO getPublisherById(@PathVariable("id") String id){
+        //return publisherRepository.findById(id).get();
+    //    Account account = accountRepository.findById(id).get();
+    //    return publisherRepository.findByAccountId(account.getId());
+        Publisher publisher= publisherRepository.findById(id).get();
+        Account account = accountRepository.findById(publisher.getAccountId()).get();
+        PublisherDTO publisherDTO = new PublisherDTO();
+        publisherDTO.setEmail(publisher.getEmail());
+        publisherDTO.setPassword(account.getPassword());
+        publisherDTO.setUsername(account.getUsername());
+        publisherDTO.setAccountId(account.getId());
+        publisherDTO.setId(publisher.getId());
+        publisherDTO.setComments(publisher.getComments());
+        publisherDTO.setImage(publisher.getImage());
+        publisherDTO.setDescription(publisher.getDescription());
+        publisherDTO.setLogo(publisher.getLogo());
+        publisherDTO.setName(publisher.getName());
+        return publisherDTO;
     }
 
     @DeleteMapping("{publication}")
     public String deleteByName(@PathVariable("publication") String publication){
-        Publisher b = publisherRepository.findByUsername(publication);
-        publisherRepository.delete(b);
+        //Publisher b = publisherRepository.findByUsername(publication);
+        Account b = accountRepository.findByUsername(publication);
+        //publisherRepository.delete(b);
+        accountRepository.delete(b);
         return (publication+" delete successfully");
     }
-
+//
     @GetMapping("publication/{publication}")
     public Publisher getByPublication(@PathVariable("publication") String publication){
-        return publisherRepository.findByUsername(publication);
+        //return publisherRepository.findByUsername(publication);
+        Account account = accountRepository.findByUsername(publication);
+        return publisherRepository.findByAccountId(account.getId());
     }
 
     @GetMapping("email/{email}")
     public Publisher getByEmail(@PathVariable("email") String email){
+
         return publisherRepository.findByEmail(email);
     }
-
+//
     @GetMapping("password/{password}")
     public Publisher getByPassword(@PathVariable("password") String password){
-        return publisherRepository.findByPassword(password);
+       // return publisherRepository.findByPassword(password);
+        Account account = accountRepository.findByPassword(password);
+        return publisherRepository.findByAccountId(account.getId());
     }
 
     @PostMapping
@@ -63,9 +87,9 @@ public class PublisherController {
             System.out.println("Need email");
         } else if (publisherDTO.getPassword() == null) {
             System.out.println("Need password");
-        } else if (publisherRepository.findByUsername(publisherDTO.getUsername()) != null) {
+        } else if (accountRepository.findByUsername(publisherDTO.getUsername()) != null) {
             System.out.println("Try different name");
-        } else if (publisherRepository.findByPassword(publisherDTO.getPassword()) != null) {
+        } else if (accountRepository.findByPassword(publisherDTO.getPassword()) != null) {
             System.out.println("Try different password");
         } else if (publisherRepository.findByEmail(publisherDTO.getEmail()) != null) {
             System.out.println("Try different Email");
@@ -109,8 +133,8 @@ public class PublisherController {
                 publisher.setComments(publisherDTO.getComments());
                 publisher.setEmail(publisherDTO.getEmail());
                 publisher.setLogo(publisher.getLogo());
-                publisher.setAccountId(publisherDTO.getAccountId());
-                Account account = accountRepository.findById(publisherDTO.getAccountId()).get();
+                publisher.setAccountId(publisherDTO.getId());
+                Account account = accountRepository.findById(publisherDTO.getId()).get();
                 account.setUsername(publisherDTO.getUsername());
                 account.setPassword(publisherDTO.getPassword());
                 return publisherRepository.save(publisher);
