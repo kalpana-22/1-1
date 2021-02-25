@@ -23,4 +23,13 @@ export class HeaderComponent implements OnInit {
   //openSignupForm() {
    // this.dialog.open(SignupComponent, {width: '500px', height: '630px'});
  // }
+
+  myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 }
