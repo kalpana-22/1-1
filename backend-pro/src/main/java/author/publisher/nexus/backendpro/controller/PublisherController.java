@@ -8,6 +8,7 @@ import author.publisher.nexus.backendpro.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -23,10 +24,28 @@ public class PublisherController {
     private AccountRepository accountRepository;
 
     @GetMapping
-    public List<Publisher> getPublisher(){
+    public List<PublisherDTO> getPublisher(){
 
-        return publisherRepository.findAll();
+        List<Publisher> publishers =  publisherRepository.findAll();
+        List<PublisherDTO> publisherDTOS = new ArrayList<>();
+        publishers.forEach(publisher -> {
+            Account account = accountRepository.findById(publisher.getAccountId()).get();
+            PublisherDTO publisherDTO = new PublisherDTO();
+            publisherDTO.setName(publisher.getName());
+            publisherDTO.setLogo(publisher.getLogo());
+            publisherDTO.setDescription(publisher.getDescription());
+            publisherDTO.setImage(publisher.getImage());
+            publisherDTO.setComments(publisher.getComments());
+            publisherDTO.setId(publisher.getId());
+            publisherDTO.setAccountId(publisher.getAccountId());
+            publisherDTO.setEmail(publisher.getEmail());
+            publisherDTO.setUsername(account.getUsername());
+            publisherDTO.setPassword(account.getPassword());
 
+            publisherDTOS.add(publisherDTO);
+        });
+
+        return publisherDTOS;
     }
 
     @GetMapping("{id}")
@@ -48,6 +67,15 @@ public class PublisherController {
         publisherDTO.setLogo(publisher.getLogo());
         publisherDTO.setName(publisher.getName());
         return publisherDTO;
+    }
+
+    @DeleteMapping("{id}")
+    public String deleteById(@PathVariable("id") String id){
+        Publisher publisher = publisherRepository.findById(id).get();
+        Account account = accountRepository.findById(publisher.getAccountId()).get();
+        publisherRepository.delete(publisher);
+        accountRepository.delete(account);
+        return("success");
     }
 
     @DeleteMapping("{publication}")

@@ -2,7 +2,7 @@ import {Comment} from './comment';
 
 export class Publisher {
     id: string;
-    publication: string;
+    username: string;
     email: string;
     password: string;
     name: string;

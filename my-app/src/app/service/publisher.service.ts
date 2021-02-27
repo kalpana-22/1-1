@@ -23,7 +23,7 @@ export class PublisherService {
   }
 
   getPublisher(id: number) : Observable<Publisher> {
-    return this.http.get<Publisher>(baseURL + 'publisher/' + id)
+    return this.http.get<Publisher>('http://localhost:8080/api/publisher/' + id)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 

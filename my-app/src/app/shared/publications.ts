@@ -3,7 +3,7 @@ import {Publisher} from './publishers';
 export const PUBLISHERS: Publisher[] = [
     {
       id: '0',
-      publication:'Ariya Publisher',
+      username:'Ariya Publisher',
       email:'ariyapublishers@gmail.com',
       password:'ariya',
       name:'Mr. K. Ariyapala',
@@ -39,7 +39,7 @@ export const PUBLISHERS: Publisher[] = [
     },
     {
       id: '1',
-      publication:'A',
+      username:'A',
       email:'a@gmail.com',
       password:'a',
       name:'Mr.A',
@@ -75,7 +75,7 @@ export const PUBLISHERS: Publisher[] = [
     },
     {
       id: '2',
-      publication:'B',
+      username:'B',
       email:'b@gmail.com',
       password:'b',
       name:'Mr.B',
@@ -111,7 +111,7 @@ export const PUBLISHERS: Publisher[] = [
     },
     {
       id: '3',
-      publication:'C',
+      username:'C',
       email:'c@gmail.com',
       password:'c',
       name:'Mr.C',
