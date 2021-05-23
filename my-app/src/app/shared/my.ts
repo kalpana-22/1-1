@@ -3,5 +3,5 @@ export class My {
     name: string;
     file: string;
     fileSource: string;
-  target: any;
+    target: any;
 }

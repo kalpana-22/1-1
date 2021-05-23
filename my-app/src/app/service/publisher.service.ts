@@ -39,7 +39,7 @@ export class PublisherService {
       })
     };
 
-    return this.http.put<Publisher>(baseURL + 'publisher/' + publisher.id, publisher, httpOption)
+    return this.http.put<Publisher>('http://localhost:8080/api/publisher/'  + publisher.id, publisher, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
@@ -52,6 +52,9 @@ export class PublisherService {
 
     return this.http.post<Feedback>(baseURL + 'feedback/' +  feedback, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
+
+    //return this.http.post<Feedback>(baseURL + 'feedback/' +  feedback, httpOption)
+    //.pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
 

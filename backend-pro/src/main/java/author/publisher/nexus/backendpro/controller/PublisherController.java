@@ -73,12 +73,13 @@ public class PublisherController {
     public String deleteById(@PathVariable("id") String id){
         Publisher publisher = publisherRepository.findById(id).get();
         Account account = accountRepository.findById(publisher.getAccountId()).get();
-        publisherRepository.delete(publisher);
+        //publisherRepository.delete(publisher);
         accountRepository.delete(account);
         return("success");
     }
 
-    @DeleteMapping("{publication}")
+
+    @DeleteMapping("publication/{publication}")
     public String deleteByName(@PathVariable("publication") String publication){
         //Publisher b = publisherRepository.findByUsername(publication);
         Account b = accountRepository.findByUsername(publication);
@@ -86,7 +87,7 @@ public class PublisherController {
         accountRepository.delete(b);
         return (publication+" delete successfully");
     }
-//
+
     @GetMapping("publication/{publication}")
     public Publisher getByPublication(@PathVariable("publication") String publication){
         //return publisherRepository.findByUsername(publication);
