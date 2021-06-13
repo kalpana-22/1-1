@@ -73,18 +73,27 @@ public class PublisherController {
     public String deleteById(@PathVariable("id") String id){
         Publisher publisher = publisherRepository.findById(id).get();
         Account account = accountRepository.findById(publisher.getAccountId()).get();
-        //publisherRepository.delete(publisher);
+        publisherRepository.delete(publisher);
         accountRepository.delete(account);
         return("success");
     }
 
+    @DeleteMapping("email/{email}")
+    public String deleteByEmail(@PathVariable("email") String email){
+        Publisher b = publisherRepository.findByEmail(email);
+        Account a = accountRepository.findById(b.getAccountId()).get();
+        publisherRepository.delete(b);
+        accountRepository.delete(a);
+        return (email+" delete successfully");
+    }
 
     @DeleteMapping("publication/{publication}")
     public String deleteByName(@PathVariable("publication") String publication){
-        //Publisher b = publisherRepository.findByUsername(publication);
-        Account b = accountRepository.findByUsername(publication);
-        //publisherRepository.delete(b);
-        accountRepository.delete(b);
+       // Publisher b = publisherRepository.findByUsername(publication);
+        Account a = accountRepository.findByUsername(publication);
+        Publisher b = publisherRepository.findByAccountId(a.getId());
+        publisherRepository.delete(b);
+        accountRepository.delete(a);
         return (publication+" delete successfully");
     }
 
@@ -145,31 +154,59 @@ public class PublisherController {
             return new Publisher();
         }
 
-        @PutMapping
-        public Publisher UpdatePublisher (@RequestBody PublisherDTO publisherDTO){
-            if (publisherDTO.getUsername() == null) {
-                System.out.println("Need user name");
-            } else if (publisherDTO.getEmail() == null) {
-                System.out.println("Need email");
-            } else if (publisherDTO.getPassword() == null) {
-                System.out.println("Need password");
 
-            } else {
-                Publisher publisher = publisherRepository.findById(publisherDTO.getId()).get();
-                publisher.setName(publisherDTO.getName());
-                publisher.setImage(publisherDTO.getImage());
-                publisher.setDescription(publisherDTO.getDescription());
-                publisher.setComments(publisherDTO.getComments());
-                publisher.setEmail(publisherDTO.getEmail());
-                publisher.setLogo(publisher.getLogo());
-                publisher.setAccountId(publisherDTO.getId());
-                Account account = accountRepository.findById(publisherDTO.getId()).get();
-                account.setUsername(publisherDTO.getUsername());
-                account.setPassword(publisherDTO.getPassword());
-                return publisherRepository.save(publisher);
-            }
+//        @PutMapping
+//        public Publisher UpdatePublisher(@RequestBody PublisherDTO publisherDTO){
+//            if (publisherDTO.getUsername() == null) {
+//                System.out.println("Need user name");
+//            } else if (publisherDTO.getEmail() == null) {
+//                System.out.println("Need email");
+//            } else if (publisherDTO.getPassword() == null) {
+//                System.out.println("Need password");
+//
+//            } else {
+//                Publisher publisher = publisherRepository.findById(publisherDTO.getId()).get();
+//                publisher.setName(publisherDTO.getName());
+//                publisher.setImage(publisherDTO.getImage());
+//                publisher.setDescription(publisherDTO.getDescription());
+//                publisher.setComments(publisherDTO.getComments());
+//                publisher.setEmail(publisherDTO.getEmail());
+//                publisher.setLogo(publisher.getLogo());
+//                publisher.setAccountId(publisherDTO.getId());
+//                Account account = accountRepository.findById(publisherDTO.getAccountId()).get();
+//                account.setUsername(publisherDTO.getUsername());
+//                account.setPassword(publisherDTO.getPassword());
+//                return publisherRepository.save(publisher);
+//            }
+//
+//            return new Publisher();
+//        }
+//error//uda eka kalin eka yata eka passe 6/13/2021
+    @PutMapping
+    public Publisher UpdatePublisher(@RequestBody PublisherDTO publisherDTO){
+        if (publisherDTO.getUsername() == null) {
+            System.out.println("Need user name");
+        } else if (publisherDTO.getEmail() == null) {
+            System.out.println("Need email");
+        } else if (publisherDTO.getPassword() == null) {
+            System.out.println("Need password");
 
-            return new Publisher();
+        } else {
+            Publisher publisher = publisherRepository.findById(publisherDTO.getId()).get();
+            publisher.setName(publisherDTO.getName());
+            publisher.setImage(publisherDTO.getImage());
+            publisher.setDescription(publisherDTO.getDescription());
+            publisher.setComments(publisherDTO.getComments());
+            publisher.setEmail(publisherDTO.getEmail());
+            publisher.setLogo(publisher.getLogo());
+            publisher.setAccountId(publisherDTO.getId());
+            Account account = accountRepository.findById(publisher.getAccountId()).get();
+            account.setUsername(publisherDTO.getUsername());
+            account.setPassword(publisherDTO.getPassword());
+            return publisherRepository.save(publisher);
         }
+
+        return new Publisher();
+    }
 
 }

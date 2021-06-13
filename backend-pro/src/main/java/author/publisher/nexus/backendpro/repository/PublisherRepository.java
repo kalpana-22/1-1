@@ -15,4 +15,6 @@ public interface PublisherRepository extends MongoRepository<Publisher, String> 
    //Publisher findByPassword(String password);
 
     Publisher findByAccountId(String id);
+
+    //Publisher findByUsername(String publication);
 }

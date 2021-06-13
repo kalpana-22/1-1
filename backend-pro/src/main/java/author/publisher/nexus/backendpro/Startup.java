@@ -52,7 +52,7 @@ public class Startup implements CommandLineRunner {
         Account account1 = new Account();
         account1.setPassword("aaa");
         account1.setUsername("Cccc");
-        account1 = accountRepository.save(account1);
+        accountRepository.save(account1);
 
 //        Publisher publisher1 = new Publisher();
 //        publisher1.setName("Sarasavi");
@@ -62,10 +62,10 @@ public class Startup implements CommandLineRunner {
 //        publisher1.setAccountId(account1.getId());
 //        publisherRepository.save(publisher1);
 
-        Account account2 = new Account();
-        account2.setPassword("aaa");
-        account2.setUsername("Cccc");
-        account2 = accountRepository.save(account2);
+//        Account account2 = new Account();
+//        account2.setPassword("aaa");
+//        account2.setUsername("Cccc");
+//        account2 = accountRepository.save(account2);
 //        Publisher publisher2 = new Publisher();
 //        publisher2.setName("Gunasena");
 //        publisher2.setEmail("gunasena@gmail.com");
