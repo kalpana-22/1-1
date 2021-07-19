@@ -28,4 +28,20 @@ public class AccountController {
         return "Delete Successful";
     }
 
+    @PostMapping
+    public Account getPublisherByName(@RequestBody Account account){
+        if (account.getUsername() == null) System.out.println("Need Publication name");
+        else if (account.getEmail() == null) System.out.println("Need email");
+        else if (account.getPassword() == null) System.out.println("Need password");
+        else if (account.getPhonenumber() == null) System.out.println("Need phonenumber");
+        else{
+            Account a = new Account();
+            a.setEmail(account.getEmail());
+            a.setUsername(account.getUsername());
+            a.setPhonenumber(account.getPhonenumber());
+            a.setPassword(account.getPassword());
+        }
+        return new Account();
+    }
+
 }

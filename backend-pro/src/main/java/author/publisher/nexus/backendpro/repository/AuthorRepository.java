@@ -10,7 +10,7 @@ public interface AuthorRepository  extends MongoRepository<Author, String> {
     //
     //8//Author findByPassword(String password);
 
-    Author findByEmail(String email);
+   // Author findByEmail(String email);
 
     Author findByAccountId(String id);
 

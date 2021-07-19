@@ -10,7 +10,7 @@ public class Author {
     private String id;
    // private String username;
    // private String password;
-    private String email;
+    //private String email;
     private String phonenumber;
     private String accountId;
 
@@ -38,13 +38,13 @@ public class Author {
 //        this.password = password;
 //    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getPhonenumber() {
         return phonenumber;

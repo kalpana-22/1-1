@@ -41,7 +41,7 @@ public class AuthorController {
         Author author = authorRepository.findById(id).get();
         Account account = accountRepository.findById(author.getAccountId()).get();
         AuthorDTO authorDTO = new AuthorDTO();
-        authorDTO.setEmail(author.getEmail());
+        authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
         authorDTO.setPhonenumber(author.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
@@ -57,7 +57,7 @@ public class AuthorController {
         Account account = accountRepository.findByUsername(username);
         Author author= authorRepository.findByAccountId(account.getId());
         AuthorDTO authorDTO = new AuthorDTO();
-        authorDTO.setEmail(author.getEmail());
+        authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
         authorDTO.setPhonenumber(author.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
@@ -74,7 +74,7 @@ public class AuthorController {
         Account account = accountRepository.findByPassword(password);
         Author author= authorRepository.findByAccountId(account.getId());
         AuthorDTO authorDTO = new AuthorDTO();
-        authorDTO.setEmail(author.getEmail());
+        authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
         authorDTO.setPhonenumber(author.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
@@ -89,10 +89,11 @@ public class AuthorController {
     public AuthorDTO getAuthorByEmail(@PathVariable("email") String email) {
 
         //return authorRepository.findByEmail(email);
-        Author author = authorRepository.findByEmail(email);
-        Account account = accountRepository.findById(author.getAccountId()).get();
+        //Author author = authorRepository.findByEmail(email);
+        Account account = accountRepository.findByEmail(email);  //DAAAAAAANN
+        Author author = authorRepository.findByAccountId(account.getId());
         AuthorDTO authorDTO = new AuthorDTO();
-        authorDTO.setEmail(author.getEmail());
+        authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
         authorDTO.setPhonenumber(author.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
@@ -116,7 +117,7 @@ public class AuthorController {
             System.out.println("Try different username");
         } else if (accountRepository.findByPassword(authorDTO.getPassword())!=null) {
             System.out.println("Try different password");
-        } else if (authorRepository.findByEmail(authorDTO.getEmail())!=null) {
+        } else if (accountRepository.findByEmail(authorDTO.getEmail())!=null) {
             System.out.println("Try different Email");
 
             //authorRepository.findByUsername(author.getUsername());
@@ -125,11 +126,11 @@ public class AuthorController {
             Account account = new Account();
             account.setPassword(authorDTO.getPassword());
             account.setUsername(authorDTO.getUsername());
+            account.setEmail(authorDTO.getEmail());
             account = accountRepository.save(account);
 
             Author author = new Author();
             author.setPhonenumber(authorDTO.getPhonenumber());
-            author.setEmail(authorDTO.getEmail());
             author.setAccountId(account.getId());
             return authorRepository.save(author);
 
@@ -153,12 +154,12 @@ public class AuthorController {
 
             Author author = authorRepository.findById(authorDTO.getId()).get();
             author.setPhonenumber(authorDTO.getPhonenumber());
-            author.setEmail(authorDTO.getEmail());
             author.setAccountId(authorDTO.getId());
             Account account = accountRepository.findById(author.getAccountId()).get();       //authorDTO.getAccountId()
            // Account account = accountRepository.findById(authorDTO.getAccountId()).get();
             account.setUsername(authorDTO.getUsername());
             account.setPassword(authorDTO.getPassword());
+            account.setEmail(authorDTO.getEmail());
             return authorRepository.save(author);
         }
 

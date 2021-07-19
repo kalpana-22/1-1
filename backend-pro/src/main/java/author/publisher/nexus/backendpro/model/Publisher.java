@@ -10,7 +10,7 @@ public class Publisher {
     private String id;
   //  private String publication;
   //  private String password;
-    private String email;
+   // private String email;
     private String accountId;
     //
     private String name;
@@ -44,13 +44,13 @@ public class Publisher {
 //        this.password = password;
 //    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getAccountId() {
         return accountId;

@@ -33,25 +33,27 @@ public class Startup implements CommandLineRunner {
         Account account = new Account();
         account.setUsername("Kalpana");
         account.setPassword("kalpana");
-        author.setEmail("kalpana@gmail.com");
+        account.setEmail("kalpana@gmail.com");
         author.setPhonenumber("0978678564");
         accountRepository.save(account);
 
 
 //        author.setUsername("kalpana");
 //        author.setPassword("rajeshwari");
-        author.setPhonenumber("0352267769");
-        authorRepository.save(author);
+  //      author.setPhonenumber("0352267769");
+    //    authorRepository.save(author);
 
-        Author author2 = new Author();
-        author2.setEmail("sss@gmail.com");
+      //  Author author2 = new Author();
+   //DAAAN    // account2.setEmail("sss@gmail.com");
       //  author2.setUsername("kamal");
       //  author2.setPassword("gunarathnam");
-        authorRepository.save(author2);
+       // authorRepository.save(author2);
 
         Account account1 = new Account();
-        account1.setPassword("aaa");
-        account1.setUsername("Cccc");
+        account1.setPassword("Manel");
+        account1.setUsername("Kamal");
+        account1.setPhonenumber("058463223");
+        account1.setEmail("fhgdjsgd.dhjh@mskdk.ck");
         accountRepository.save(account1);
 
 //        Publisher publisher1 = new Publisher();
@@ -76,11 +78,11 @@ public class Startup implements CommandLineRunner {
         Account account3 = new Account();
         account3.setUsername("A");
         account3.setPassword("a");
+        account3.setEmail("a@gmail.com");
         account3 = accountRepository.save(account3);
         Publisher publisher3 = new Publisher();
         publisher3.setAccountId(account3.getId());
         publisher3.setLogo("/assets/img/book4.png");
-        publisher3.setEmail("a@gmail.com");
         publisher3.setDescription("A A A A publication is something made to communicate with the public. Publications are usually printed on paper (like magazines and books), but online publications are delivered via the Internet. If you are an aspiring author, publication of your work is, most likely, the Holy Grail you seek. ");
         publisher3.setImage("/assets/img/book2.jpg");
         publisher3.setName("Mr.A");
