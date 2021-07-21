@@ -41,6 +41,7 @@ public class PublisherController {
             publisherDTO.setEmail(account.getEmail());
             publisherDTO.setUsername(account.getUsername());
             publisherDTO.setPassword(account.getPassword());
+            publisherDTO.setPhonenumber(account.getPhonenumber());
 
             publisherDTOS.add(publisherDTO);
         });
@@ -66,6 +67,7 @@ public class PublisherController {
         publisherDTO.setDescription(publisher.getDescription());
         publisherDTO.setLogo(publisher.getLogo());
         publisherDTO.setName(publisher.getName());
+        publisherDTO.setPhonenumber(account.getPhonenumber());
         return publisherDTO;
     }
 
@@ -138,6 +140,7 @@ public class PublisherController {
             Account account = new Account();
             account.setPassword(publisherDTO.getPassword());
             account.setUsername(publisherDTO.getUsername());
+            account.setPhonenumber(publisherDTO.getPhonenumber());
             account.setEmail(publisherDTO.getEmail());
             account = accountRepository.save(account);
 
@@ -171,12 +174,14 @@ public class PublisherController {
                 publisher.setDescription(publisherDTO.getDescription());
                 publisher.setComments(publisherDTO.getComments());
                 //publisher.setEmail(publisherDTO.getEmail());
-                publisher.setLogo(publisher.getLogo());
-                publisher.setAccountId(publisherDTO.getId());
+                publisher.setLogo(publisherDTO.getLogo());
+                publisher.setAccountId(publisherDTO.getAccountId()); //dan 2021/7/21
                 Account account = accountRepository.findById(publisherDTO.getAccountId()).get();
                 account.setUsername(publisherDTO.getUsername());
                 account.setPassword(publisherDTO.getPassword());
                 account.setEmail(publisherDTO.getEmail());
+                account.setPhonenumber(publisherDTO.getPhonenumber());
+                accountRepository.save(account);
                 return publisherRepository.save(publisher);
             }
 

@@ -11,7 +11,7 @@ public class Author {
    // private String username;
    // private String password;
     //private String email;
-    private String phonenumber;
+   // private String phonenumber;
     private String accountId;
 
     public String getId() {
@@ -46,13 +46,13 @@ public class Author {
 //        this.email = email;
 //    }
 
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
+//    public String getPhonenumber() {
+//        return phonenumber;
+//    }
+//
+//    public void setPhonenumber(String phonenumber) {
+//        this.phonenumber = phonenumber;
+//    }
 
     public String getAccountId() {
         return accountId;

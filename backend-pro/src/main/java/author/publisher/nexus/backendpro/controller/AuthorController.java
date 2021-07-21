@@ -43,7 +43,7 @@ public class AuthorController {
         AuthorDTO authorDTO = new AuthorDTO();
         authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
-        authorDTO.setPhonenumber(author.getPhonenumber());
+        authorDTO.setPhonenumber(account.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
         authorDTO.setAccountId(account.getId());
         authorDTO.setId(author.getId());
@@ -59,7 +59,7 @@ public class AuthorController {
         AuthorDTO authorDTO = new AuthorDTO();
         authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
-        authorDTO.setPhonenumber(author.getPhonenumber());
+        authorDTO.setPhonenumber(account.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
         authorDTO.setAccountId(account.getId());
         authorDTO.setId(author.getId());
@@ -76,7 +76,7 @@ public class AuthorController {
         AuthorDTO authorDTO = new AuthorDTO();
         authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
-        authorDTO.setPhonenumber(author.getPhonenumber());
+        authorDTO.setPhonenumber(account.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
         authorDTO.setAccountId(account.getId());
         authorDTO.setId(author.getId());
@@ -95,7 +95,7 @@ public class AuthorController {
         AuthorDTO authorDTO = new AuthorDTO();
         authorDTO.setEmail(account.getEmail());
         authorDTO.setPassword(account.getPassword());
-        authorDTO.setPhonenumber(author.getPhonenumber());
+        authorDTO.setPhonenumber(account.getPhonenumber());
         authorDTO.setUsername(account.getUsername());
         authorDTO.setAccountId(account.getId());
         authorDTO.setId(author.getId());
@@ -127,10 +127,10 @@ public class AuthorController {
             account.setPassword(authorDTO.getPassword());
             account.setUsername(authorDTO.getUsername());
             account.setEmail(authorDTO.getEmail());
+            account.setPhonenumber(authorDTO.getPhonenumber());
             account = accountRepository.save(account);
 
             Author author = new Author();
-            author.setPhonenumber(authorDTO.getPhonenumber());
             author.setAccountId(account.getId());
             return authorRepository.save(author);
 
@@ -153,13 +153,13 @@ public class AuthorController {
 
 
             Author author = authorRepository.findById(authorDTO.getId()).get();
-            author.setPhonenumber(authorDTO.getPhonenumber());
             author.setAccountId(authorDTO.getId());
             Account account = accountRepository.findById(author.getAccountId()).get();       //authorDTO.getAccountId()
            // Account account = accountRepository.findById(authorDTO.getAccountId()).get();
             account.setUsername(authorDTO.getUsername());
             account.setPassword(authorDTO.getPassword());
             account.setEmail(authorDTO.getEmail());
+            account.setPhonenumber(authorDTO.getPhonenumber());
             return authorRepository.save(author);
         }
 

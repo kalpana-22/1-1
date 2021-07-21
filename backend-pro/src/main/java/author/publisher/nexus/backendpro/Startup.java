@@ -34,7 +34,7 @@ public class Startup implements CommandLineRunner {
         account.setUsername("Kalpana");
         account.setPassword("kalpana");
         account.setEmail("kalpana@gmail.com");
-        author.setPhonenumber("0978678564");
+        account.setPhonenumber("0978678564");
         accountRepository.save(account);
 
 
@@ -79,6 +79,7 @@ public class Startup implements CommandLineRunner {
         account3.setUsername("A");
         account3.setPassword("a");
         account3.setEmail("a@gmail.com");
+        account3.setPhonenumber("0352267769");
         account3 = accountRepository.save(account3);
         Publisher publisher3 = new Publisher();
         publisher3.setAccountId(account3.getId());

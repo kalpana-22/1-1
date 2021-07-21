@@ -9,6 +9,7 @@ public class PublisherDTO {
     private String password;
     private String email;
     private String accountId;
+    private String phonenumber;
     private String name;
     private String image;
     private String logo;
@@ -93,5 +94,13 @@ public class PublisherDTO {
 
     public void setComments(Comment[] comments) {
         this.comments = comments;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 }
