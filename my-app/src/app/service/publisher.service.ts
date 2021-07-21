@@ -32,6 +32,7 @@ export class PublisherService {
     .pipe(catchError(error => error));
   }
 
+  //2021/7/21/ me kalla // kalama
   putPublisher(publisher: Publisher): Observable<Publisher>{ 
     const httpOption = {
       headers: new HttpHeaders({
