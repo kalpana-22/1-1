@@ -51,9 +51,6 @@ public class PublisherController {
 
     @GetMapping("{id}")
     public PublisherDTO getPublisherById(@PathVariable("id") String id){
-        //return publisherRepository.findById(id).get();
-    //    Account account = accountRepository.findById(id).get();
-    //    return publisherRepository.findByAccountId(account.getId());
         Publisher publisher= publisherRepository.findById(id).get();
         Account account = accountRepository.findById(publisher.getAccountId()).get();
         PublisherDTO publisherDTO = new PublisherDTO();
@@ -98,25 +95,82 @@ public class PublisherController {
         accountRepository.delete(a);
         return (publication+" delete successfully");
     }
+//
+//    @GetMapping("publication/{publication}")
+//    public Publisher getByPublication(@PathVariable("publication") String publication){
+//        //return publisherRepository.findByUsername(publication);
+//        Account account = accountRepository.findByUsername(publication);
+//        return publisherRepository.findByAccountId(account.getId());
+//    }//meken account eke tiyena details ene na. yata eke enawa
 
     @GetMapping("publication/{publication}")
-    public Publisher getByPublication(@PathVariable("publication") String publication){
-        //return publisherRepository.findByUsername(publication);
+    public PublisherDTO getByPublication(@PathVariable("publication") String publication){
         Account account = accountRepository.findByUsername(publication);
-        return publisherRepository.findByAccountId(account.getId());
+        Publisher publisher= publisherRepository.findByAccountId(account.getId());
+        PublisherDTO publisherDTO = new PublisherDTO();
+        publisherDTO.setEmail(account.getEmail());
+        publisherDTO.setPassword(account.getPassword());
+        publisherDTO.setUsername(account.getUsername());
+        publisherDTO.setAccountId(account.getId());
+        publisherDTO.setId(publisher.getId());
+        publisherDTO.setComments(publisher.getComments());
+        publisherDTO.setImage(publisher.getImage());
+        publisherDTO.setDescription(publisher.getDescription());
+        publisherDTO.setLogo(publisher.getLogo());
+        publisherDTO.setName(publisher.getName());
+        publisherDTO.setPhonenumber(account.getPhonenumber());
+        return publisherDTO;
     }
 
+//    @GetMapping("email/{email}")
+//    public Publisher getByEmail(@PathVariable("email") String email){
+//        Account account = accountRepository.findByEmail(email);
+//        return publisherRepository.findByAccountId(account.getId());
+//    }//meken account eke tiyena details ene na. yata eke enawa
+
     @GetMapping("email/{email}")
-    public Publisher getByEmail(@PathVariable("email") String email){
+    public PublisherDTO getByEmail(@PathVariable("email") String email){
         Account account = accountRepository.findByEmail(email);
-        return publisherRepository.findByAccountId(account.getId());
+        Publisher publisher= publisherRepository.findByAccountId(account.getId());
+        PublisherDTO publisherDTO = new PublisherDTO();
+        publisherDTO.setEmail(account.getEmail());
+        publisherDTO.setPassword(account.getPassword());
+        publisherDTO.setUsername(account.getUsername());
+        publisherDTO.setAccountId(account.getId());
+        publisherDTO.setId(publisher.getId());
+        publisherDTO.setComments(publisher.getComments());
+        publisherDTO.setImage(publisher.getImage());
+        publisherDTO.setDescription(publisher.getDescription());
+        publisherDTO.setLogo(publisher.getLogo());
+        publisherDTO.setName(publisher.getName());
+        publisherDTO.setPhonenumber(account.getPhonenumber());
+        return publisherDTO;
     }
-//
+
+//    @GetMapping("password/{password}")
+//    public Publisher getByPassword(@PathVariable("password") String password){
+//       // return publisherRepository.findByPassword(password);
+//        Account account = accountRepository.findByPassword(password);
+//        return publisherRepository.findByAccountId(account.getId());
+//    }//meken account eke tiyena details ene na. yata eke enawa
+
     @GetMapping("password/{password}")
-    public Publisher getByPassword(@PathVariable("password") String password){
-       // return publisherRepository.findByPassword(password);
+    public PublisherDTO getByPassword(@PathVariable("password") String password){
         Account account = accountRepository.findByPassword(password);
-        return publisherRepository.findByAccountId(account.getId());
+        Publisher publisher= publisherRepository.findByAccountId(account.getId());
+        PublisherDTO publisherDTO = new PublisherDTO();
+        publisherDTO.setEmail(account.getEmail());
+        publisherDTO.setPassword(account.getPassword());
+        publisherDTO.setUsername(account.getUsername());
+        publisherDTO.setAccountId(account.getId());
+        publisherDTO.setId(publisher.getId());
+        publisherDTO.setComments(publisher.getComments());
+        publisherDTO.setImage(publisher.getImage());
+        publisherDTO.setDescription(publisher.getDescription());
+        publisherDTO.setLogo(publisher.getLogo());
+        publisherDTO.setName(publisher.getName());
+        publisherDTO.setPhonenumber(account.getPhonenumber());
+        return publisherDTO;
     }
 
     @PostMapping
