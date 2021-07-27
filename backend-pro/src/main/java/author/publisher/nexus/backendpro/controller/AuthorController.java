@@ -8,6 +8,7 @@ import author.publisher.nexus.backendpro.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -23,10 +24,29 @@ public class AuthorController {
     private AccountRepository accountRepository;
 
     @GetMapping
-    public List<Author> getAuthors() {
+    public List<AuthorDTO> getAuthor(){
+  ///dan add kale
+    List<Author> authors =  authorRepository.findAll();
+    List<AuthorDTO> authorDTOS = new ArrayList<>();
+    authors.forEach(author -> {
+        Account account = accountRepository.findById(author.getAccountId()).get();
+        AuthorDTO authorDTO = new AuthorDTO();
+        authorDTO.setEmail(account.getEmail());
+        authorDTO.setPassword(account.getPassword());
+        authorDTO.setPhonenumber(account.getPhonenumber());
+        authorDTO.setUsername(account.getUsername());
+        authorDTO.setAccountId(account.getId());
+        authorDTO.setId(author.getId());
 
-        return authorRepository.findAll();
+        authorDTOS.add(authorDTO);
+    });
+
+        return authorDTOS;
     }
+//    public List<Author> getAuthors() {
+//
+//        return authorRepository.findAll();
+//    }
 //
     @DeleteMapping("{username}")
     public String deleteAuthorByUserName(@PathVariable("username") String username) {
@@ -104,7 +124,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public Author getAuthorByUserName(@RequestBody AuthorDTO authorDTO) {
+    public AuthorDTO getAuthorByUserName(@RequestBody AuthorDTO authorDTO) {
         if (authorDTO.getUsername()==null) {
             System.out.println("Need user name");
         } else if (authorDTO.getEmail()==null) {
@@ -132,11 +152,12 @@ public class AuthorController {
 
             Author author = new Author();
             author.setAccountId(account.getId());
-            return authorRepository.save(author);
-
+            authorRepository.save(author);
+            return new AuthorDTO(account.getId(),account.getEmail(),account.getPhonenumber(),account.getId(),
+                    account.getUsername(), null);
         }
 
-        return new Author();
+        return new AuthorDTO();
     }
 
     @PutMapping

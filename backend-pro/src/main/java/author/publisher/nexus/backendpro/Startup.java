@@ -29,7 +29,7 @@ public class Startup implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Author author = new Author();
+       // Author author = new Author();
         Account account = new Account();
         account.setUsername("Kalpana");
         account.setPassword("kalpana");
@@ -37,17 +37,11 @@ public class Startup implements CommandLineRunner {
         account.setPhonenumber("0978678564");
         accountRepository.save(account);
 
+        Author a = new Author();
+        a.setAccountId(account.getId());
+        authorRepository.save(a);
 
-//        author.setUsername("kalpana");
-//        author.setPassword("rajeshwari");
-  //      author.setPhonenumber("0352267769");
-    //    authorRepository.save(author);
 
-      //  Author author2 = new Author();
-   //DAAAN    // account2.setEmail("sss@gmail.com");
-      //  author2.setUsername("kamal");
-      //  author2.setPassword("gunarathnam");
-       // authorRepository.save(author2);
 
         Account account1 = new Account();
         account1.setPassword("Manel");
@@ -56,24 +50,7 @@ public class Startup implements CommandLineRunner {
         account1.setEmail("fhgdjsgd.dhjh@mskdk.ck");
         accountRepository.save(account1);
 
-//        Publisher publisher1 = new Publisher();
-//        publisher1.setName("Sarasavi");
-//        publisher1.setEmail("sarasavi@gmail.com");
-//     //   publisher1.setPassword("sarasavi");
-//        publisher1.setLogo("C:\\Users\\sasith\\1-1\\my-app\\src\\assets\\img\\book8.jpg");
-//        publisher1.setAccountId(account1.getId());
-//        publisherRepository.save(publisher1);
 
-//        Account account2 = new Account();
-//        account2.setPassword("aaa");
-//        account2.setUsername("Cccc");
-//        account2 = accountRepository.save(account2);
-//        Publisher publisher2 = new Publisher();
-//        publisher2.setName("Gunasena");
-//        publisher2.setEmail("gunasena@gmail.com");
-//       // publisher2.setPassword("gunasena");
-//        publisher2.setAccountId(account2.getId());
-//        publisherRepository.save(publisher2);
 
         Account account3 = new Account();
         account3.setUsername("A");

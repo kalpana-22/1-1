@@ -9,6 +9,18 @@ public class AuthorDTO {
     private String username;
     private String password;
 
+    public AuthorDTO() {
+    }
+
+    public AuthorDTO(String id, String email, String phonenumber, String accountId, String username, String password) {
+        this.id = id;
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.accountId = accountId;
+        this.username = username;
+        this.password = password;
+    }
+
     public String getId() {
         return id;
     }

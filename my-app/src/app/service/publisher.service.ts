@@ -8,6 +8,7 @@ import { baseURL } from '../shared/baseurl';
 
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { Feedback } from '../shared/feedback';
+import { Register } from '../shared/register';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class PublisherService {
     .pipe(catchError(error => error));
   }
 
-  //2021/7/21/ me kalla // kalama
+  //2021/7/21/ me kalla // kalama 
   putPublisher(publisher: Publisher): Observable<Publisher>{ 
     const httpOption = {
       headers: new HttpHeaders({
@@ -43,6 +44,22 @@ export class PublisherService {
     return this.http.put<Publisher>('http://localhost:8080/api/publisher/'  + publisher.id, publisher, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
+
+
+ ///////////////////2021/7/26 sign up
+
+  postAuthor(author: Register): Observable<Register> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<Register>('http://localhost:8080/api/author/' + author, httpOption)
+    .pipe(catchError(this.processHTTPMsgService.handleError));
+  }
+
+///////
 
   submitFeedback(feedback: Feedback): Observable<Feedback> {
     const httpOption = {
