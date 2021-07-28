@@ -9,6 +9,7 @@ import { baseURL } from '../shared/baseurl';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 import { Feedback } from '../shared/feedback';
 import { Register } from '../shared/register';
+import { Comment } from '../shared/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -45,22 +46,32 @@ export class PublisherService {
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-
- ///////////////////2021/7/26 sign up
-
-  postAuthor(author: Register): Observable<Register> {
+  postComment(comment: Comment,  id: string): Observable<Publisher>{ 
     const httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
 
-    return this.http.post<Register>('http://localhost:8080/api/author/' + author, httpOption)
+    return this.http.post<Publisher>('http://localhost:8080/api/publisher/'  +id+'/comment', comment, httpOption)
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-///////
+  
+ ///////////////////2021/7/26 sign up
 
+  // postAuthor(author: Register): Observable<Register> {
+  //   const httpOption = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   };
+
+  //   return this.http.post<Register>('http://localhost:8080/api/author/' + author, httpOption)
+  //   .pipe(catchError(this.processHTTPMsgService.handleError));
+  // }
+
+///////
   submitFeedback(feedback: Feedback): Observable<Feedback> {
     const httpOption = {
       headers: new HttpHeaders({

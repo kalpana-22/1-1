@@ -109,7 +109,7 @@ export class PublicationdetailComponent implements OnInit {
     this.comment.date = new Date().toISOString();
     console.log(this.comment);
     this.publishercopy.comments.push(this.comment);
-    this.publisherService.putPublisher(this.publishercopy)
+    this.publisherService.postComment(this.comment, this.publishercopy.id)
       .subscribe(publisher => {
         this.publishers = publisher;
         this.publishercopy = publisher;

@@ -2,6 +2,7 @@ package author.publisher.nexus.backendpro.controller;
 
 import author.publisher.nexus.backendpro.dto.PublisherDTO;
 import author.publisher.nexus.backendpro.model.Account;
+import author.publisher.nexus.backendpro.model.Comment;
 import author.publisher.nexus.backendpro.model.Publisher;
 import author.publisher.nexus.backendpro.repository.AccountRepository;
 import author.publisher.nexus.backendpro.repository.PublisherRepository;
@@ -121,13 +122,16 @@ public class PublisherController {
         publisherDTO.setPhonenumber(account.getPhonenumber());
         return publisherDTO;
     }
-
-//    @GetMapping("email/{email}")
-//    public Publisher getByEmail(@PathVariable("email") String email){
-//        Account account = accountRepository.findByEmail(email);
-//        return publisherRepository.findByAccountId(account.getId());
-//    }//meken account eke tiyena details ene na. yata eke enawa
-
+/////////////////////////////////////////
+//    @GetMapping("comment/{id}")
+//    public PublisherDTO getCommentById(@PathVariable("id") String id){
+//        Account account = accountRepository.findById(id).get();
+//        Publisher publisher= publisherRepository.findByAccountId(account.getId());
+//        PublisherDTO publisherDTO = new PublisherDTO();
+//        publisher.setComments(publisher.getComments());
+//        return publisherDTO;
+//    }
+/////////////////////////
     @GetMapping("email/{email}")
     public PublisherDTO getByEmail(@PathVariable("email") String email){
         Account account = accountRepository.findByEmail(email);
@@ -211,6 +215,16 @@ public class PublisherController {
             return new Publisher();
         }
 
+    @PostMapping("{id}/comment")
+    public Publisher commentPublisher(@PathVariable String id, @RequestBody Comment comment){
+        Publisher publisher = publisherRepository.findById(id).get();
+        if(publisher.getComments() == null) {
+            publisher.setComments(new ArrayList<>());
+        }
+        publisher.getComments().add(comment);
+        publisherRepository.save(publisher);
+        return publisher;
+    }
 
         @PutMapping
         public Publisher UpdatePublisher(@RequestBody PublisherDTO publisherDTO){

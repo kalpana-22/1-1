@@ -3,6 +3,8 @@ package author.publisher.nexus.backendpro.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document("publisher")
 public class Publisher {
 
@@ -17,7 +19,7 @@ public class Publisher {
     private String image;
     private String logo;
     private String description;
-    private Comment comments[];
+    private List<Comment> comments;
 
 
     public String getId() {
@@ -100,11 +102,11 @@ public class Publisher {
 //        this.comments = comments;
 //    }
 
-    public Comment[] getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Comment[] comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 }

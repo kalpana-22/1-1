@@ -2,6 +2,8 @@ package author.publisher.nexus.backendpro.dto;
 
 import author.publisher.nexus.backendpro.model.Comment;
 
+import java.util.List;
+
 public class PublisherDTO {
 
     private String id;
@@ -14,7 +16,7 @@ public class PublisherDTO {
     private String image;
     private String logo;
     private String description;
-    private Comment comments[];
+    private List<Comment> comments;
 
     public String getId() {
         return id;
@@ -88,11 +90,11 @@ public class PublisherDTO {
         this.description = description;
     }
 
-    public Comment[] getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Comment[] comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 
