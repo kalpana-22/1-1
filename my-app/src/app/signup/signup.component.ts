@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
 
   errMess: any;
   publishers: any;
+  //errMessa: any;//dan
 
   signupform = this.formBuilder.group({
     username:'',
@@ -33,7 +34,6 @@ export class SignupComponent implements OnInit {
     
   }
 
-    
   onSubmit(): void {
 
     this.http.post<void>('http://localhost:8080/api/author',this.signupform.value)
@@ -43,5 +43,21 @@ export class SignupComponent implements OnInit {
     console.warn('Your order has been submitted', this.signupform.value);
     this.signupform.reset();
   } 
+
+  // onSubmit(): void {
+
+  //   this.http.post<void>('http://localhost:8080/api/author',this.signupform.value)
+  //   .pipe(catchError(this.processHTTPMsgService.handleError)).subscribe(publisher => {
+  //     this.publishers = publisher;
+  //     this.errMessa ='';},
+  //     errmess =>{
+  //       this.errMess = <any>errmess;
+  //       this.errMessa = 'already exist';
+  //     });
+  //   // Process checkout data here
+  //   console.warn('Your order has been submitted', this.signupform.value);
+  //   this.signupform.reset();
+  // } dan
+
   
 }
